@@ -4,6 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:u_learn/app_blocs.dart';
 import 'package:u_learn/app_events.dart';
 import 'package:u_learn/app_states.dart';
+import 'package:u_learn/pages/welcome/bloc/welcome_blocs.dart';
+import 'package:u_learn/pages/welcome/welcome.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,8 +17,15 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => AppBlocs(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => WelcomeBloc(),
+        ),
+        BlocProvider(
+          create: (context) => AppBlocs(),
+        ),
+      ],
       child: ScreenUtilInit(
           builder: (context, child) => MaterialApp(
             title: 'Flutter Demo',
@@ -24,7 +33,7 @@ class MyApp extends StatelessWidget {
               colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
               useMaterial3: true,
             ),
-            home: const MyHomePage(title: 'Flutter Demo Home Page'),
+            home: Welcome(),
           )
       ),
     );
@@ -67,11 +76,13 @@ class MyHomePage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           FloatingActionButton(
+            heroTag: "heroTag1",
             onPressed: () => BlocProvider.of<AppBlocs>(context).add(Increment()),
             tooltip: 'Increment',
             child: const Icon(Icons.add),
           ),
           FloatingActionButton(
+            heroTag: "heroTag2",
             onPressed: (){
               BlocProvider.of<AppBlocs>(context).add(Decrement());
             },
