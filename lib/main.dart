@@ -20,20 +20,26 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
+          // lazy: false,
           create: (context) => WelcomeBloc(),
         ),
         BlocProvider(
+          //lazy: false, /// lazy: false will ask flutter to create the bloc first.
           create: (context) => AppBlocs(),
         ),
       ],
       child: ScreenUtilInit(
           builder: (context, child) => MaterialApp(
             title: 'Flutter Demo',
+            debugShowCheckedModeBanner: false,
             theme: ThemeData(
               colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
               useMaterial3: true,
             ),
             home: Welcome(),
+            routes: {
+              "myHomePage": (context) => MyHomePage(),
+            },
           )
       ),
     );
@@ -41,9 +47,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
+  const MyHomePage({super.key});
 
   @override
   Widget build(BuildContext context) {

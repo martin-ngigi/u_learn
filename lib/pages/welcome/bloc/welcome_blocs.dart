@@ -4,6 +4,7 @@ import 'package:u_learn/pages/welcome/bloc/welcome_states.dart';
 
 class WelcomeBloc extends Bloc<WelcomeEvent, WelcomeState>{
   WelcomeBloc():super(WelcomeState()){
+    print("----> [WelcomeBloc] created");
     /// register events
     on<WelcomeEvent>((event, emit){
       emit(WelcomeState(page: state.page));
