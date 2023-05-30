@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:u_learn/app_blocs.dart';
 import 'package:u_learn/app_events.dart';
 import 'package:u_learn/app_states.dart';
+import 'package:u_learn/pages/sign_in/sign_in.dart';
 import 'package:u_learn/pages/welcome/bloc/welcome_blocs.dart';
 import 'package:u_learn/pages/welcome/welcome.dart';
 
@@ -33,12 +34,17 @@ class MyApp extends StatelessWidget {
             title: 'Flutter Demo',
             debugShowCheckedModeBanner: false,
             theme: ThemeData(
+              appBarTheme: AppBarTheme(
+                elevation: 0,
+                backgroundColor: Colors.white
+              ),
               colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
               useMaterial3: true,
             ),
             home: Welcome(),
             routes: {
               "myHomePage": (context) => MyHomePage(),
+              "signIn": (context) => SignIn(),
             },
           )
       ),
