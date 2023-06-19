@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:u_learn/common/values/colors.dart';
 
 /// app bar
-AppBar buildAppBar() {
+AppBar buildAppBar(String type) {
   return AppBar(
     bottom: PreferredSize(
       preferredSize: Size.fromHeight(1),
@@ -15,7 +15,7 @@ AppBar buildAppBar() {
       ),
     ),
     title: Text(
-      "Login",
+      type,
       style: TextStyle(
           color: AppColors.primaryText,
           fontSize: 16.sp,
@@ -45,8 +45,8 @@ Widget buildThirdPartyLogin(BuildContext context) {
 }
 
 Widget _reusableIcons(
-  String iconName,
-) {
+    String iconName,
+    ) {
   return GestureDetector(
     onTap: () {},
     child: Container(
@@ -78,7 +78,7 @@ Widget buildTextField(String hintText, String textType, String iconName,
       height: 50.h,
       margin: EdgeInsets.only(bottom: 20.h),
       decoration: BoxDecoration(
-          // color: Colors.grey[100],
+        // color: Colors.grey[100],
           color: Colors.white,
           borderRadius: BorderRadius.all(Radius.circular(15.w)),
           border: Border.all(
@@ -163,9 +163,9 @@ Widget buildLoginAndRegButton(String buttonName, String buttonType,
           borderRadius: BorderRadius.circular(15.w),
           border: Border.all(
             /// check for registration button border color.
-            color: buttonType == "login"
-                ? Colors.transparent
-                : AppColors.primaryFourthElementText
+              color: buttonType == "login"
+                  ? Colors.transparent
+                  : AppColors.primaryFourthElementText
           ),
           boxShadow: [
             BoxShadow(

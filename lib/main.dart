@@ -5,11 +5,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:u_learn/app_blocs.dart';
 import 'package:u_learn/app_events.dart';
 import 'package:u_learn/app_states.dart';
+import 'package:u_learn/pages/bloc_providers.dart';
+import 'package:u_learn/pages/register/register.dart';
 import 'package:u_learn/pages/sign_in/bloc/sign_in_bloc.dart';
 import 'package:u_learn/pages/sign_in/sign_in.dart';
 import 'package:u_learn/pages/welcome/bloc/welcome_blocs.dart';
 import 'package:u_learn/pages/welcome/welcome.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'common/values/colors.dart';
 import 'firebase_options.dart';
 
 Future<void> main() async {
@@ -35,24 +38,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          // lazy: false,
-          create: (context) => WelcomeBloc(),
-        ),
-        BlocProvider(
-          //lazy: false, /// lazy: false will ask flutter to create the bloc first.
-          create: (context) => AppBlocs(),
-        ),
-
-        BlocProvider(create: (context) => SignInBloc()),
-      ],
+      providers: AppBlocProviders.allBlocProviders,
       child: ScreenUtilInit(
           builder: (context, child) => MaterialApp(
             title: 'Flutter Demo',
             debugShowCheckedModeBanner: false,
             theme: ThemeData(
               appBarTheme: AppBarTheme(
+                iconTheme: IconThemeData(
+                  color: AppColors.primaryText
+                ),
                 elevation: 0,
                 backgroundColor: Colors.white
               ),
@@ -63,6 +58,7 @@ class MyApp extends StatelessWidget {
             routes: {
               "myHomePage": (context) => MyHomePage(),
               "signIn": (context) => SignIn(),
+              "register": (context) => Register()
             },
           )
       ),

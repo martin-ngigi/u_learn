@@ -5,7 +5,7 @@ import 'package:u_learn/pages/sign_in/bloc/sign_in_bloc.dart';
 import 'package:u_learn/pages/sign_in/bloc/sign_in_events.dart';
 import 'package:u_learn/pages/sign_in/bloc/sign_in_states.dart';
 import 'package:u_learn/pages/sign_in/sign_in_controller.dart';
-import 'package:u_learn/pages/sign_in/widgets/sign_in_widget.dart';
+import '../common_widgets.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({Key? key}) : super(key: key);
@@ -25,7 +25,7 @@ class _SignInState extends State<SignIn> {
           backgroundColor: Colors.white,
 
           /// app bar
-          appBar: buildAppBar(),
+          appBar: buildAppBar("Login"),
 
           /// body
           body: SingleChildScrollView(
@@ -76,8 +76,9 @@ class _SignInState extends State<SignIn> {
                       SizedBox(
                         height: 5.h,
                       ),
-                      buildLoginAndRegButton("Register", "register", () {
-                        print('register btn');
+                      buildLoginAndRegButton("Sign Up", "register", () {
+                        /// navigate to register page
+                        Navigator.of(context).pushNamed("register");
                       }),
                     ],
                   ),
