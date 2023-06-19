@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "680097068141",
+    "project_id": "ulearn-1a133",
+    "storage_bucket": "ulearn-1a133.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:680097068141:android:c7b0dbe4c842e798807b64",
+        "android_client_info": {
+          "package_name": "ke.co.codegarage.u_learn"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBG1OuzZPqBskW4UeQ_WyFF2Ce2D8xD--g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

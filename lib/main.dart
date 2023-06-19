@@ -1,14 +1,30 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:u_learn/app_blocs.dart';
 import 'package:u_learn/app_events.dart';
 import 'package:u_learn/app_states.dart';
+import 'package:u_learn/pages/sign_in/bloc/sign_in_bloc.dart';
 import 'package:u_learn/pages/sign_in/sign_in.dart';
 import 'package:u_learn/pages/welcome/bloc/welcome_blocs.dart';
 import 'package:u_learn/pages/welcome/welcome.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
-void main() {
+Future<void> main() async {
+
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform /// This is optional
+  );
+
+  /// print fcm token
+  final fcmToken = await FirebaseMessaging.instance.getToken();
+  print(" ----------> [Main] FCM token $fcmToken");
+  print("-----> main");
+
   runApp(const MyApp());
 }
 
@@ -28,6 +44,8 @@ class MyApp extends StatelessWidget {
           //lazy: false, /// lazy: false will ask flutter to create the bloc first.
           create: (context) => AppBlocs(),
         ),
+
+        BlocProvider(create: (context) => SignInBloc()),
       ],
       child: ScreenUtilInit(
           builder: (context, child) => MaterialApp(

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyBvRZD8xsXMME_paTU8v667S9kX3GECRFU</string>
+	<key>GCM_SENDER_ID</key>
+	<string>680097068141</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>ke.co.codegarage.uLearn</string>
+	<key>PROJECT_ID</key>
+	<string>ulearn-1a133</string>
+	<key>STORAGE_BUCKET</key>
+	<string>ulearn-1a133.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:680097068141:ios:655574e083117c95807b64</string>
+</dict>
+</plist>
