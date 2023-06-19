@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:u_learn/common/widgets/flutter_toast.dart';
 import 'package:u_learn/pages/sign_in/bloc/sign_in_bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -20,9 +22,13 @@ class SignInController {
         String password = state.password;
 
         if (emailAddress.isEmpty) {
+          //print("-------------> [SignInController] Email empty");
+          toastInfo(msg: "You need to fill in email address");
           return;
         }
         if (password.isEmpty) {
+          // print("-------------> [SignInController] Password empty");
+          toastInfo(msg: "You need to fill in password address");
           return;
         }
 
@@ -32,26 +38,46 @@ class SignInController {
                   email: emailAddress, password: password);
 
           if(credential.user == null){
-            print("-------> [SignInController] Error: user is null");
+            // print("-------> [SignInController] Error: user is null");
+            toastInfo(msg: "You don't exist in DB");
+            return;
           }
-          if(credential.user!.emailVerified){
-            print("-------> [SignInController] Error: user email not verified");
-
+          if(! credential.user!.emailVerified){
+            // print("-------> [SignInController] Error: user email not verified");
+            toastInfo(msg: "You need to verify email account");
+            return;
           }
 
           var user = credential.user;
           if(user!=null){
             /// we got verified user from firebase
-            print("-------> [SignInController] Success getting user from firebase");
-
+            // print("-------> [SignInController] Success getting user from firebase");
+            toastInfo(msg: "Success: User Exist", backgroundColor: Colors.green);
           }
           else{
             /// We have an error getting user from firebase
-            print("-------> [SignInController] Error: We have an error getting user from firebase");
+            // print("-------> [SignInController] Error: We have an error getting user from firebase");
+            toastInfo(msg: "Currently, you are not a user of this app.");
+            return;
+          }
+        } on FirebaseAuthException catch (e) {
+          if(e.code == 'user-not-found'){
+            // print("-------> [SignInController] Error: User not found for that email");
+            toastInfo(msg: "User not found for that email");
 
           }
-        } catch (e) {
-
+          else if(e.code == 'wrong-password'){
+            // print("-------> [SignInController] Error: Wrong password provided for that user");
+            toastInfo(msg: " Wrong password provided for that user");
+          }
+          else if(e.code == 'invalid-email'){
+            // print("-------> [SignInController] Error: Your email is invalid");
+            toastInfo(msg: "Your email is invalid");
+          }
+          else if(e.code == 'user-disabled'){
+            // print("-------> [SignInController] Error: Your account is disabled.");
+            toastInfo(msg: "Your account is disabled.");
+          }
         }
       }
     } catch (e) {}
