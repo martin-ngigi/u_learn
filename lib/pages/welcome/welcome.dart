@@ -8,6 +8,8 @@ import 'package:u_learn/pages/welcome/bloc/welcome_blocs.dart';
 import 'package:u_learn/pages/welcome/bloc/welcome_events.dart';
 import 'package:u_learn/pages/welcome/bloc/welcome_states.dart';
 
+import '../../common/values/colors.dart';
+
 class Welcome extends StatefulWidget {
   const Welcome({Key? key}) : super(key: key);
 
@@ -80,8 +82,8 @@ class _WelcomeState extends State<Welcome> {
                           dotsCount: 3,
                           mainAxisAlignment: MainAxisAlignment.center,
                           decorator: DotsDecorator(
-                              color: Colors.grey,
-                              activeColor: Colors.blue,
+                              color: AppColors.primaryThirdElementText,
+                              activeColor: AppColors.primaryElement,
                               size: const Size.square(8.0),
                               activeSize: const Size(20, 8),
                               activeShape: RoundedRectangleBorder(
@@ -121,7 +123,7 @@ class _WelcomeState extends State<Welcome> {
           child: Text(
             "$title",
             style: TextStyle(
-                color: Colors.black,
+                color: AppColors.primaryText,
                 fontSize: 24.sp,
                 fontWeight: FontWeight.normal
             ),
@@ -134,7 +136,7 @@ class _WelcomeState extends State<Welcome> {
           child: Text(
             "$subTitle",
             style: TextStyle(
-                color: Colors.black.withOpacity(0.5),
+                color: AppColors.primarySecondaryElementText,
                 fontSize: 14.sp,
                 fontWeight: FontWeight.normal
             ),
@@ -163,7 +165,7 @@ class _WelcomeState extends State<Welcome> {
             width: 375.w,
             height: 50.h,
             decoration: BoxDecoration(
-                color: Colors.blue,
+                color: AppColors.primaryElement,
                 borderRadius: BorderRadius.all(Radius.circular(15.w)),
                 boxShadow: [
                   BoxShadow(
