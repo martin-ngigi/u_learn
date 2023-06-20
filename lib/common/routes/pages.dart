@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:u_learn/pages/application/application_page.dart';
+import 'package:u_learn/pages/application/bloc/app_blocs.dart';
 import 'package:u_learn/pages/register/bloc/register_bloc.dart';
 import 'package:u_learn/pages/register/register.dart';
 import 'package:u_learn/pages/sign_in/bloc/sign_in_bloc.dart';
@@ -32,13 +34,13 @@ class AppPages {
           bloc: BlocProvider(create: (_) => RegisterBlocs())),
 
       /// Application
-    /**
+
       PageEntity(
         route: AppRoutes.APPLICATION,
         page: const ApplicationPage(),
-        // bloc: BlocProvider(create: (_) => RegisterBlocs()
+        bloc: BlocProvider(create: (_) => AppBlocs())
       ),
-      **/
+
     ];
   }
 

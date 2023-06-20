@@ -53,6 +53,7 @@ class SignInController {
             /// we got verified user from firebase
             // print("-------> [SignInController] Success getting user from firebase");
             toastInfo(msg: "Success: User Exist", backgroundColor: Colors.green);
+            Navigator.of(context).pushNamedAndRemoveUntil("/application", (route) => false);
           }
           else{
             /// We have an error getting user from firebase
