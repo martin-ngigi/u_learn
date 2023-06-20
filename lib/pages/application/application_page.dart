@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:u_learn/common/values/colors.dart';
-import 'package:u_learn/pages/application/application_widgets.dart';
+import 'package:u_learn/pages/application/widgets/application_widgets.dart';
 
 class ApplicationPage extends StatefulWidget {
 

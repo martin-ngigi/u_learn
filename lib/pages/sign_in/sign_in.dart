@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:u_learn/common/routes/routes.dart';
 import 'package:u_learn/pages/sign_in/bloc/sign_in_bloc.dart';
 import 'package:u_learn/pages/sign_in/bloc/sign_in_events.dart';
 import 'package:u_learn/pages/sign_in/bloc/sign_in_states.dart';
@@ -78,7 +79,7 @@ class _SignInState extends State<SignIn> {
                       ),
                       buildLoginAndRegButton("Sign Up", "register", () {
                         /// navigate to register page
-                        Navigator.of(context).pushNamed("register");
+                        Navigator.of(context).pushNamed("/register");
                       }),
                     ],
                   ),
