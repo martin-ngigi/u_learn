@@ -56,7 +56,7 @@ class MyApp extends StatelessWidget {
             ),
             home: Welcome(),
             routes: {
-              "myHomePage": (context) => MyHomePage(),
+              //"myHomePage": (context) => MyHomePage(),
               "signIn": (context) => SignIn(),
               "register": (context) => Register()
             },
@@ -66,6 +66,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
+/**
 class MyHomePage extends StatelessWidget {
   const MyHomePage({super.key});
 
@@ -118,3 +119,4 @@ class MyHomePage extends StatelessWidget {
     );
   }
 }
+**/
