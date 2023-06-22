@@ -3,12 +3,14 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:u_learn/common/values/constants.dart';
 import 'package:u_learn/main.dart';
 import 'package:u_learn/pages/welcome/bloc/welcome_blocs.dart';
 import 'package:u_learn/pages/welcome/bloc/welcome_events.dart';
 import 'package:u_learn/pages/welcome/bloc/welcome_states.dart';
 
 import '../../common/values/colors.dart';
+import 'package:u_learn/global.dart';
 
 class Welcome extends StatefulWidget {
   const Welcome({Key? key}) : super(key: key);
@@ -155,6 +157,9 @@ class _WelcomeState extends State<Welcome> {
               );
             }
             else{
+              /// save the value to true
+              Global.storageService.setBool(AppConstants.STORAGE_DEVICE_OPEN_FIRST_TIME, true);
+              print("------> [Welcome]. Is Device first open ? ${Global.storageService.getDeviceFirstOpen()}");
               /// jump to a new page
               Navigator.of(context).pushNamedAndRemoveUntil("/sign_in", (route) => false);
             }

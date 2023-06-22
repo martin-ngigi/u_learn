@@ -1,9 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:u_learn/common/values/constants.dart';
 import 'package:u_learn/common/widgets/flutter_toast.dart';
 import 'package:u_learn/pages/sign_in/bloc/sign_in_bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+
+import '../../global.dart';
 
 class SignInController {
   final BuildContext context;
@@ -53,6 +56,7 @@ class SignInController {
             /// we got verified user from firebase
             // print("-------> [SignInController] Success getting user from firebase");
             toastInfo(msg: "Success: User Exist", backgroundColor: Colors.green);
+            Global.storageService.setString(AppConstants.STORAGE_USER_TOKEN_KEY, "12345678");
             Navigator.of(context).pushNamedAndRemoveUntil("/application", (route) => false);
           }
           else{

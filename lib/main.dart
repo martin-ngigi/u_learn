@@ -4,22 +4,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:u_learn/common/routes/pages.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:u_learn/global.dart';
 import 'common/values/colors.dart';
 import 'firebase_options.dart';
 
 Future<void> main() async {
-
-  WidgetsFlutterBinding.ensureInitialized();
-
-  await Firebase.initializeApp(
-      options: DefaultFirebaseOptions.currentPlatform /// This is optional
-  );
-
-  /// print fcm token
-  final fcmToken = await FirebaseMessaging.instance.getToken();
-  print(" ----------> [Main] FCM token $fcmToken");
-  print("-----> main");
-
+  await Global.init();
   runApp(const MyApp());
 }
 

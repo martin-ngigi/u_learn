@@ -10,6 +10,7 @@ import 'package:u_learn/pages/sign_in/sign_in.dart';
 import 'package:u_learn/pages/welcome/bloc/welcome_blocs.dart';
 import 'package:u_learn/pages/welcome/welcome.dart';
 
+import '../../global.dart';
 import 'names.dart';
 
 class AppPages {
@@ -60,7 +61,16 @@ class AppPages {
       /// check for route name matching when navigator gets triggered
       var results = routes().where((element) => element.route == settings.name);
       if(results.isNotEmpty){
-        print("--------> [AppPages] Valid route name ${settings.name}");
+        print("--------> [AppPages] Valid route name ${results.first.route}");;
+        bool deviceFirstOpen = Global.storageService.getDeviceFirstOpen();
+        if(results.first.route == AppRoutes.INITIAL && deviceFirstOpen){
+          bool isLoggedin = Global.storageService.getIsLoggedIn();
+          if(isLoggedin){
+            /// if user is logged in, take them to application apge
+            return MaterialPageRoute(builder: (_) => const ApplicationPage(), settings: settings);
+          }
+          return MaterialPageRoute(builder: (_) => SignIn(),settings: settings);
+        }
         return MaterialPageRoute(builder: (_) => results.first.page,settings: settings);
       }
     }
