@@ -70,6 +70,7 @@ class _SignInState extends State<SignIn> {
                         },
                       ),
                       forgotPassword(),
+                      SizedBox(height: 35.h,),
                       buildLoginAndRegButton("Login", "login", () {
                         /// login logic
                         SignInController(context: context).handleSignIn("email");
