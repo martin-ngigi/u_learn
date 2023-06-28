@@ -23,7 +23,15 @@ class _ProfilePageState extends State<ProfilePage> {
             children: [
 
               ///profile pic and edit
-              profileIconAndEditButton()
+              profileIconAndEditButton(),
+
+              SizedBox(height: 30.h,),
+
+              ///Settings
+              Padding(
+                padding: EdgeInsets.only(left: 25.w),
+                child: buildListView(),
+              )
             ],
           ),
         ),

@@ -59,3 +59,51 @@ Widget profileIconAndEditButton(){
     ),
   );
 }
+
+///setting section buttons
+var imagesInfo = <String, String>{
+  "Settings":"settings.png",
+  "Payment details":"credit-card.png",
+  "Achievement":"award.png",
+  "Love":"heart(1).png",
+  "Reminders":"cube.png",
+};
+
+Widget buildListView(){
+  return Column(
+    children: [
+      ...List.generate(imagesInfo.length, (index) => GestureDetector(
+        child: Container(
+          child: Row(
+            children: [
+              /// settings Icon
+              Container(
+                margin: EdgeInsets.only(bottom: 15.h),
+                width: 40.w,
+                height: 40.h,
+                padding: EdgeInsets.all(7.0),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10.w),
+                    color: AppColors.primaryElement
+                ),
+                child: Image.asset("assets/icons/${imagesInfo.values.elementAt(index)}"),
+              ),
+
+              SizedBox(width: 15.w,),
+
+              /// settings text
+              Text(
+                imagesInfo.keys.elementAt(index),
+                style: TextStyle(
+                    color: AppColors.primaryText,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16.sp
+                ),
+              ),
+            ],
+          ),
+        ),
+      ))
+    ],
+  );
+}
