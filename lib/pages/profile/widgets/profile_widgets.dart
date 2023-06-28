@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:u_learn/common/routes/names.dart';
 
 import '../../../common/values/colors.dart';
 
@@ -69,10 +70,15 @@ var imagesInfo = <String, String>{
   "Reminders":"cube.png",
 };
 
-Widget buildListView(){
+Widget buildListView(BuildContext context){
   return Column(
     children: [
       ...List.generate(imagesInfo.length, (index) => GestureDetector(
+        onTap: (){
+
+          /// navigate to SETTINGS PAGE
+          Navigator.of(context).pushNamed(AppRoutes.SETTINGS_PAGE);
+        },
         child: Container(
           child: Row(
             children: [

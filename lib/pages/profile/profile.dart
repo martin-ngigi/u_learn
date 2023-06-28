@@ -30,7 +30,7 @@ class _ProfilePageState extends State<ProfilePage> {
               ///Settings
               Padding(
                 padding: EdgeInsets.only(left: 25.w),
-                child: buildListView(),
+                child: buildListView(context),
               )
             ],
           ),
