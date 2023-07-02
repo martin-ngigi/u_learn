@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:u_learn/common/routes/names.dart';
+import 'package:u_learn/common/widgets/base_text_widget.dart';
 
 import '../../../common/values/colors.dart';
 
@@ -18,14 +19,7 @@ AppBar buildAppBar(){
           ),
 
           /// profile text
-          Text(
-              "Profile",
-            style: TextStyle(
-              color: AppColors.primaryText,
-              fontWeight: FontWeight.bold,
-              fontSize: 16.sp
-            ),
-          ),
+          reusableText("Profile"),
 
           /// more menu icon
           SizedBox(
