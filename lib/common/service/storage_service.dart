@@ -1,4 +1,5 @@
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:u_learn/common/entities/entities.dart';
 import 'package:u_learn/common/values/constants.dart';
 
 class StorageService{
@@ -30,5 +31,9 @@ class StorageService{
 
   Future<bool> remove(String key){
     return _preferences.remove(key);
+  }
+
+  getUserProfile(){
+    var profileOffline = _preferences.getString(AppConstants.STORAGE_USER_PROFILE_KEY)??"";
   }
 }

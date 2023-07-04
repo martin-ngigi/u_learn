@@ -1,6 +1,7 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:u_learn/common/routes/pages.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
         // designSize: const Size(375, 812), /// Default size
         designSize: const Size(375, 800),
           builder: (context, child) => MaterialApp(
+            builder: EasyLoading.init(), /// initialize EasyLoading
             title: 'Flutter Demo',
             debugShowCheckedModeBanner: false,
             theme: ThemeData(
