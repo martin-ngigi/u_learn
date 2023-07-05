@@ -25,6 +25,7 @@ class _SettingsPageState extends State<SettingsPage> {
 
     /// clear storage
     Global.storageService.remove(AppConstants.STORAGE_USER_TOKEN_KEY);
+    Global.storageService.remove(AppConstants.STORAGE_USER_PROFILE_KEY);
 
     ///navigate to sign in page
     Navigator.of(context).pushNamedAndRemoveUntil(AppRoutes.SIGN_IN, (route) => false);

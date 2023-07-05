@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:u_learn/common/entities/entities.dart';
 import 'package:u_learn/common/values/constants.dart';
@@ -33,7 +35,12 @@ class StorageService{
     return _preferences.remove(key);
   }
 
-  getUserProfile(){
-    var profileOffline = _preferences.getString(AppConstants.STORAGE_USER_PROFILE_KEY)??"";
+  UserItem? getUserProfile(){
+    var profileOffline = _preferences.getString(AppConstants.STORAGE_USER_PROFILE_KEY)??"";  /// if profile doesnt exist, return ""
+    if(profileOffline.isNotEmpty){
+     return  UserItem.fromJson(jsonDecode(profileOffline)); /// jsonDecode will convert string to json
+    }
+    ///else
+    return null; /// return empty UserItem
   }
 }

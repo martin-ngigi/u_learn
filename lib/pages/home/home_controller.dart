@@ -6,7 +6,7 @@ class HomeController{
 
   final BuildContext context;
   HomeController({required this.context});
-  UserItem userProfile = Global.storageService.getUserProfile();
+  UserItem? userProfile = Global.storageService.getUserProfile();
 
   void init(){
     print("----------> [HomeController] init()");

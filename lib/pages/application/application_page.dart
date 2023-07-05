@@ -26,7 +26,7 @@ class _ApplicationPageState extends State<ApplicationPage> {
         child: Scaffold(
           body: buildPage(state.index),
           bottomNavigationBar: Container(
-            width: 375.w,
+            width: 340.w,
             height: 80.h,
             decoration: BoxDecoration(
                 color: AppColors.primaryElement,

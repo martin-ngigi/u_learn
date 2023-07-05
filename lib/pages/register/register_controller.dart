@@ -49,7 +49,7 @@ class RegisterController {
         /// Send Email Verification
         await credential.user?.sendEmailVerification();
         await credential.user?.updateDisplayName(userName);
-        String photoUrl = "${AppConstants.SERVER_API_URL}/uploads/default.png";
+        String photoUrl = "/uploads/default.png";
         await credential.user?.updatePhotoURL(photoUrl);
 
         toastInfo(msg: "An email has been sent to your registered email. "
