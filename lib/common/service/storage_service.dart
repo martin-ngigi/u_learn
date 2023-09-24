@@ -35,6 +35,9 @@ class StorageService{
     return _preferences.remove(key);
   }
 
+  String getUserToken(){
+     return _preferences.getString(AppConstants.STORAGE_USER_TOKEN_KEY)??"";  /// if token doesnt exist, return ""
+  }
   UserItem? getUserProfile(){
     var profileOffline = _preferences.getString(AppConstants.STORAGE_USER_PROFILE_KEY)??"";  /// if profile doesnt exist, return ""
     if(profileOffline.isNotEmpty){

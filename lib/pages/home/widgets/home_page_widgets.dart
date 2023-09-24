@@ -2,6 +2,7 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:u_learn/common/entities/course.dart';
 import 'package:u_learn/common/values/colors.dart';
 import 'package:u_learn/common/values/constants.dart';
 import 'package:u_learn/pages/home/bloc/home_page_blocs.dart';
@@ -246,15 +247,15 @@ Widget _reusableMenuText(String menuText, {Color textColor = AppColors.primaryEl
 }
 
 /// for course grid ui widget
-Widget courseGrid(){
+Widget courseGrid(CourseItem courseItem){
   return Container(
     padding: EdgeInsets.all(12.w),
     decoration: BoxDecoration(
       /// color: Colors.green,
         borderRadius: BorderRadius.circular(15.w),
-        image: const DecorationImage(
+        image: DecorationImage(
             fit: BoxFit.fill,
-            image: AssetImage("assets/icons/image_2.png")
+            image: NetworkImage("${AppConstants.SERVER_UPLOADS}${courseItem!.thumbnail!}")
         )
     ),
     child: Column(
@@ -262,7 +263,7 @@ Widget courseGrid(){
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          "Best course for IT and Engineering",
+          "${courseItem.name}",
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
           textAlign: TextAlign.left,
@@ -275,7 +276,7 @@ Widget courseGrid(){
         ),
         SizedBox(height: 5.h,),
         Text(
-          "Flutter best course",
+          "${courseItem.description}",
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
           textAlign: TextAlign.left,

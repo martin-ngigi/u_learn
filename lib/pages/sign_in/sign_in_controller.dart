@@ -126,6 +126,7 @@ class SignInController {
     if(result.code == 200){
       try{
         Global.storageService.setString(AppConstants.STORAGE_USER_PROFILE_KEY, jsonEncode(result.data!));
+        /// used for authorization. Thats why we saved it.
         Global.storageService.setString(AppConstants.STORAGE_USER_TOKEN_KEY, result.data!.access_token!);
         EasyLoading.dismiss();
         Navigator.of(context).pushNamedAndRemoveUntil("/application", (route) => false);

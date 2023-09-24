@@ -36,6 +36,7 @@ class CourseListResponseEntity {
     this.data,
   });
 
+  /// Json['data'] has maps internally, so we need to go through from json method.
   factory CourseListResponseEntity.fromJson(Map<String, dynamic> json) =>
       CourseListResponseEntity(
         code: json["code"],
@@ -190,7 +191,7 @@ class CourseItem {
         description: json["description"],
         thumbnail: json["thumbnail"],
         video: json["video"],
-        price: json["price"],
+        price: json["price"].toString(),
         amount_total: json["amount_total"],
         lesson_num: json["lesson_num"],
         video_len: json["video_len"],
