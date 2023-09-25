@@ -6,6 +6,8 @@ import 'package:u_learn/common/values/constants.dart';
 import 'package:u_learn/global.dart';
 import 'package:u_learn/pages/application/bloc/app_blocs.dart';
 import 'package:u_learn/pages/application/bloc/app_events.dart';
+import 'package:u_learn/pages/home/bloc/home_page_blocs.dart';
+import 'package:u_learn/pages/home/bloc/home_page_events.dart';
 import 'package:u_learn/pages/profile/settings/bloc/settings_blocs.dart';
 import 'package:u_learn/pages/profile/settings/bloc/settings_states.dart';
 import 'package:u_learn/pages/profile/settings/widgets/settings_widgets.dart';
@@ -21,7 +23,8 @@ class _SettingsPageState extends State<SettingsPage> {
 
   _removeUserData(){
     /// This will enable befor logout, set the current page index is zero [HomePage]
-    context.read<AppBlocs>().add(TriggerAppEvent(0));
+    context.read<AppBlocs>().add(const TriggerAppEvent(0));
+    context.read<HomePageBlocs>().add(const HomePageDots(0));
 
     /// clear storage
     Global.storageService.remove(AppConstants.STORAGE_USER_TOKEN_KEY);

@@ -13,15 +13,23 @@ class HomeController{
   UserItem? userProfile = Global.storageService.getUserProfile();
 
   Future<void> init() async {
-    print("----------> [HomeController] init()");
-    var result = await CourseAPI.courseList();
-    if(result.code == 200){
-      context.read<HomePageBlocs>().add(HomePageCourseItem(result.data!));
-      print("Perfect !!!");
-      print("${result.data![0].name}");
+    /// Make sure the user is logged in and make the api call.
+    if(Global.storageService.getUserToken().isNotEmpty){
+      print("----------> [HomeController] init()");
+      var result = await CourseAPI.courseList();
+      if(result.code == 200){
+        if(context.mounted){
+          context.read<HomePageBlocs>().add(HomePageCourseItem(result.data!));
+        }
+        print("Perfect !!!");
+        print("${result.data![0].name}");
+      }
+      else{
+        print(" ERROR: ${result.code}");
+      }
     }
     else{
-      print(" ERROR: ${result.code}");
+      print("user has already logged out");
     }
   }
 }

@@ -40,3 +40,6 @@ gradlew signingReport
 ```
 ./gradlew signingReport
 ```
+
+# flutter tutorial
+- https://www.dbestech.com/tutorials/flutter-bloc-tutorial

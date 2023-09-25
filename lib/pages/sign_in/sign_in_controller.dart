@@ -129,8 +129,9 @@ class SignInController {
         /// used for authorization. Thats why we saved it.
         Global.storageService.setString(AppConstants.STORAGE_USER_TOKEN_KEY, result.data!.access_token!);
         EasyLoading.dismiss();
-        Navigator.of(context).pushNamedAndRemoveUntil("/application", (route) => false);
-
+        if(context.mounted){
+          Navigator.of(context).pushNamedAndRemoveUntil("/application", (route) => false);
+        }
       }
       catch(e){
         /// dismiss the indicator
