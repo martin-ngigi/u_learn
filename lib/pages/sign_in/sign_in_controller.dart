@@ -7,6 +7,7 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:u_learn/common/entities/entities.dart';
 import 'package:u_learn/common/values/constants.dart';
 import 'package:u_learn/common/widgets/flutter_toast.dart';
+import 'package:u_learn/pages/home/home_controller.dart';
 import 'package:u_learn/pages/sign_in/bloc/sign_in_bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -78,7 +79,15 @@ class SignInController {
             loginRequestEntity.open_id = id;
             loginRequestEntity.type = 1; /// type 1 means email login
 
-            asyncPostAllData(loginRequestEntity);
+            await asyncPostAllData(loginRequestEntity);
+
+            print(" I am here 11111111");
+            if(context.mounted){
+              print(" I am at context.mounted 1 ");
+              await HomeController(context: context).init();
+              print(" I am at context.mounted 2 ");
+
+            }
 
          }
           else{
