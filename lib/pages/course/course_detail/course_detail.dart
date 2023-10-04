@@ -87,7 +87,12 @@ class _CourseDetailState extends State<CourseDetail> {
                             SizedBox(height: 15.h,),
 
                             /// course buy button
-                            goBuyButton("Go Buy"),
+                            GestureDetector(
+                              onTap: (){
+                                _courseDetailController.goBuy(state.courseItem!.id);
+                              },
+                                child: goBuyButton("Go Buy")
+                            ),
 
                             SizedBox(height: 15.h,),
 

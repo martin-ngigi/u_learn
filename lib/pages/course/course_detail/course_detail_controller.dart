@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:u_learn/common/apis/course_api.dart';
 import 'package:u_learn/common/entities/course.dart';
 import 'package:u_learn/common/widgets/flutter_toast.dart';
@@ -38,6 +39,32 @@ class CourseDetailController{
     else{
       toastInfo(msg: "Something went wrong");
       print("--------- Error code : ${result.code}");
+    }
+  }
+
+  goBuy(int? id) async {
+    /// show progress bar
+    EasyLoading.show(
+      indicator: CircularProgressIndicator(),
+      maskType: EasyLoadingMaskType.clear,
+      dismissOnTap: true
+    );
+
+    CourseRequestEntity courseRequestEntity = CourseRequestEntity();
+    courseRequestEntity.id = id;
+    var result = await CourseAPI.coursePay(params:courseRequestEntity);
+
+    /// dismiss progress bar
+    EasyLoading.dismiss();
+
+    if(result.code == 200){
+      /// cleaner format of url
+      var url = Uri.decodeFull(result.data!);
+      print("------> Stripe URL:m ${url}");
+    }
+    else{
+      print("------> Error: Stripe payment failed");
+
     }
   }
 }
