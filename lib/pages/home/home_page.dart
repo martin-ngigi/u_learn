@@ -96,6 +96,7 @@ class _HomePageState extends State<HomePage> {
                           (BuildContext context, int index) {
                         return GestureDetector(
                           onTap: (){
+                            /// Navigating to course detail page, Pass course ID as an argument
                             Navigator.of(context).pushNamed(
                                 AppRoutes.COURSE_DETAIL_PAGE,
                               arguments: {

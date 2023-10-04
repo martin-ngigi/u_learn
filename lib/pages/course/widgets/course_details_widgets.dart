@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:u_learn/common/values/colors.dart';
+import 'package:u_learn/common/values/constants.dart';
 import 'package:u_learn/common/widgets/base_text_widget.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:u_learn/pages/course/course_detail/bloc/course_detail_states.dart';
 
 AppBar buildAppBar(){
   return AppBar(
@@ -9,16 +11,16 @@ AppBar buildAppBar(){
   );
 }
 
-Widget thumbNail(){
+Widget thumbNail(String thumbnail){
   return Container(
     width: 325.w,
     height: 200.h,
     decoration: BoxDecoration(
         image: DecorationImage(
             fit: BoxFit.fitWidth,
-            image: AssetImage("assets/icons/image_1.png"
-            )
-        )
+            image: NetworkImage("${AppConstants.SERVER_UPLOADS}${thumbnail}")
+        ),
+      borderRadius: BorderRadius.circular(15.h)
     ),
   );
 }
@@ -79,9 +81,9 @@ Widget _iconAndNumb(String iconPath, int num){
   );
 }
 
-Widget descriptionText(){
+Widget descriptionText(String description){
   return  reusableText(
-      "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups. Lorem Ipsum Generator.",
+      description,
       color: AppColors.primaryThirdElementText,
       fontWeight: FontWeight.normal,
       fontSize: 11.sp
@@ -120,13 +122,14 @@ Widget courseSummaryTitle(){
   );
 }
 
-var imagesInfo = <String, String>{
-  "36 Hours Video":"video_detail.png",
-  "Total 30 Lessons":"file_detail.png",
-  "67 Downloadable Resources":"download_detail.png",
-};
+Widget courseSummaryView(BuildContext context, CourseDetailStates state){
 
-Widget courseSummaryView(BuildContext context){
+  var imagesInfo = <String, String>{
+    "${state.courseItem!.video_length??0} Hours Video":"video_detail.png",
+    "Total ${state.courseItem!.lesson_num??0} Lessons":"file_detail.png",
+    "${state.courseItem!.down_num??0} Downloadable Resources":"download_detail.png",
+  };
+
   return Column(
     children: [
       ...List.generate(imagesInfo.length, (index) => GestureDetector(

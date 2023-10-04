@@ -162,9 +162,9 @@ class CourseItem {
   String? price;
   String? amount_total;
   int? lesson_num;
-  int? video_len;
+  int? video_length;
   int? down_num;
-  int? follow;
+  //int? follow;
   int? score;
   int? id;
 
@@ -177,10 +177,10 @@ class CourseItem {
     this.price,
     this.amount_total,
     this.lesson_num,
-    this.video_len,
-    this.down_num,
-    this.follow,
-    this.score,
+    this.video_length,
+   this.down_num,
+   // this.follow,
+   // this.score,
     this.id,
   });
 
@@ -194,10 +194,10 @@ class CourseItem {
         price: json["price"].toString(),
         amount_total: json["amount_total"],
         lesson_num: json["lesson_num"],
-        video_len: json["video_len"],
-        down_num: json["down_num"],
-        follow: json["follow"],
-        score: json["score"],
+        video_length: json["video_length"],
+        down_num: json["downloadable_res"],
+        //follow: json["follow"],
+       // score: json["score"],
         id: json["id"],
       );
 
@@ -210,10 +210,10 @@ class CourseItem {
     "price": price,
     "amount_total": amount_total,
     "lesson_num": lesson_num,
-    "video_len": video_len,
-    "down_num": down_num,
-    "follow": follow,
-    "score": score,
+    "video_length": video_length,
+    "downloadable_res": down_num,
+   // "follow": follow,
+   // "score": score,
     "id": id,
   };
 

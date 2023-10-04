@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:u_learn/pages/application/application_page.dart';
 import 'package:u_learn/pages/application/bloc/app_blocs.dart';
-import 'package:u_learn/pages/course/bloc/course_detail_blocs.dart';
-import 'package:u_learn/pages/course/course_detail.dart';
+import 'package:u_learn/pages/course/course_detail/course_detail.dart';
 import 'package:u_learn/pages/home/bloc/home_page_blocs.dart';
 import 'package:u_learn/pages/home/home_page.dart';
 import 'package:u_learn/pages/profile/settings/bloc/settings_blocs.dart';
@@ -17,6 +16,7 @@ import 'package:u_learn/pages/welcome/bloc/welcome_blocs.dart';
 import 'package:u_learn/pages/welcome/welcome.dart';
 
 import '../../global.dart';
+import '../../pages/course/course_detail/bloc/course_detail_blocs.dart';
 import 'names.dart';
 
 class AppPages {
@@ -61,7 +61,7 @@ class AppPages {
           bloc: BlocProvider(create: (_) => SettingsBlocs())
       ),
 
-      /// Course
+      /// Course detail
       PageEntity(
           route: AppRoutes.COURSE_DETAIL_PAGE,
           page: const CourseDetail(),

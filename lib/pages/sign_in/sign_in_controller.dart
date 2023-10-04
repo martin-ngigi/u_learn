@@ -81,12 +81,8 @@ class SignInController {
 
             await asyncPostAllData(loginRequestEntity);
 
-            print(" I am here 11111111");
             if(context.mounted){
-              print(" I am at context.mounted 1 ");
               await HomeController(context: context).init();
-              print(" I am at context.mounted 2 ");
-
             }
 
          }
@@ -136,6 +132,7 @@ class SignInController {
       try{
         Global.storageService.setString(AppConstants.STORAGE_USER_PROFILE_KEY, jsonEncode(result.data!));
         /// used for authorization. Thats why we saved it.
+        print("------> Access Token: ${result.data!.access_token!}");
         Global.storageService.setString(AppConstants.STORAGE_USER_TOKEN_KEY, result.data!.access_token!);
         EasyLoading.dismiss();
         if(context.mounted){
